@@ -13,7 +13,7 @@ public class Exercise06_19 {
 		side2 = input.nextDouble();
 		side3 = input.nextDouble();
 		if (isValid (side1, side2, side3) == true) {
-		area (side1, side2, side3);
+			area (side1, side2, side3);
 		}
 		
 	}
