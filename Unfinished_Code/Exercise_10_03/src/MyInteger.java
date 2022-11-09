@@ -13,39 +13,61 @@ public class MyInteger {
 	public boolean isEven(){
 		if (value % 2 == 0)
 		return true;
+		else {
+			return false;
+		}
 	}
 	public boolean isOdd(){
 		if (value % 2 == 1)
 		return true;
+		else {
+			return false;
+		}
 	}
 	public boolean isPrime(){
-		if (value <= 1) {
-			return false;
+		boolean q = false;
+		if (value < 1) {
+			q = false;
 		}
 		for (int i = 1; i <= value; i++) {
 			if (value % i == 0) {
-		return true;
+		q = false;
 			}
+			else
+				q = true;
 		}
+		return q;
 	}
 	public static boolean isEven(int tempValue){
 		if (tempValue % 2 == 0)
 		return true;
+		else {
+			return false;
+		}
 	}
 	public static boolean isOdd(int tempValue){
+		if (tempValue % 2 == 1)
 		return true;
+		else {
+			return false;
+		}
 	}
-	public static boolean isPrime(int tempValue){
+	/*public static boolean isPrime(int tempValue){
 		return true;
-	}
-	public static boolean isEven(){
+	}*/
+	/*public static boolean isEven(){
 		return true;
+		else {
+			return false;
+		}
 	}
 	public static boolean isOdd(){
 		return true;
+		else {
+			return false;
+		}
 	}
 	public static boolean isPrime(){
 		return true;
-	}
+	} */
 }
-
