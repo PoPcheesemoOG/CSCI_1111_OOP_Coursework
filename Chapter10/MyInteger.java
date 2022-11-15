@@ -96,5 +96,9 @@ public class MyInteger {
 				q = true;
 		}
 		return q;
-	} 
+	}
+	public boolean equals(int tempValue) {
+		
+	}
+	
 }
