@@ -1,10 +1,13 @@
 /* Name: Paul Helske
  * Date: 11/16/2022
  */
+import java.util.Scanner;
 
 public class Exercise10_07 {
 
 	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+
 		Account idList [] = new Account[10];
 		idList [0] = new Account(0, 100);
 		idList [1] = new Account(1, 100);
@@ -17,15 +20,64 @@ public class Exercise10_07 {
 		idList [8] = new Account(8, 100);
 		idList [9] = new Account(9, 100);
 
-		int mainMenu = 0;
-
-		switch (mainMenu) {
-		case 1: // Check balance
-		case 2: //withdraw
-		case 3: //deposit
-		case 4: //exit
-		default: //error message an re-prompt
-			
+		System.out.print("Enter your account id: ");
+		int id = input.nextInt();
+		System.out.println("Please choose one of the following:");
+		System.out.println("Option 1: Check Balance");
+		System.out.println("Option 2: Withdraw");
+		System.out.println("Option 3: Deposit");
+		System.out.println("Option 4: Exit");
+		int mainMenu = input.nextInt();
+		boolean q = false;
+		while (q == false) {
+			switch (mainMenu) {
+			case 1: 
+				System.out.println("You chose option: " + mainMenu);
+				System.out.println("Your balance is " + idList[id].getBalance());
+				System.out.println("Please choose one of the following:");
+				System.out.println("Option 1: Check Balance");
+				System.out.println("Option 2: Withdraw");
+				System.out.println("Option 3: Deposit");
+				System.out.println("Option 4: Exit");
+				mainMenu = input.nextInt();
+				break; // Check balance
+			case 2: 
+				System.out.println("You chose option: " + mainMenu);
+				System.out.print("Please choose how much to withdraw: ");
+				double wd = input.nextDouble();
+				idList[id].withdraw(wd);
+				System.out.println("Please choose one of the following:");
+				System.out.println("Option 1: Check Balance");
+				System.out.println("Option 2: Withdraw");
+				System.out.println("Option 3: Deposit");
+				System.out.println("Option 4: Exit");
+				mainMenu = input.nextInt();
+				break;//withdraw
+			case 3: 
+				System.out.println("You chose option: " + mainMenu);
+				System.out.print("Please choose how much to deposit: ");
+				double dp = input.nextDouble();
+				idList[id].deposit(dp);
+				System.out.println("Please choose one of the following:");
+				System.out.println("Option 1: Check Balance");
+				System.out.println("Option 2: Withdraw");
+				System.out.println("Option 3: Deposit");
+				System.out.println("Option 4: Exit");
+				mainMenu = input.nextInt();
+				break;//deposit
+			case 4: 
+				System.out.println("You chose option: " + mainMenu);
+				System.out.print("\nEnter your account id: ");
+				id = input.nextInt();
+				System.out.println("Please choose one of the following:");
+				System.out.println("Option 1: Check Balance");
+				System.out.println("Option 2: Withdraw");
+				System.out.println("Option 3: Deposit");
+				System.out.println("Option 4: Exit");
+				mainMenu = input.nextInt();
+				break;//exit
+			default: //error message an re-prompt
+			}
 		}
 
 
