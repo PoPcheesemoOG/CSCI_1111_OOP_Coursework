@@ -98,7 +98,37 @@ public class MyInteger {
 		return q;
 	}
 	public boolean equals(int tempValue) {
-		
+		if (tempValue == this.value) {
+			return true;
+		}
+		else return false;
 	}
-	
+	public boolean equals(MyInteger temp) {
+		if (temp.getMyInteger() == this.value) {
+			return true;
+		}
+		else return false;
+	}
+	public static void parseInt(char[] array) {
+		String s = "";
+		int par = 0;
+		int temp = 0;
+		
+		for (int i = 0; i < array.length; i++) {
+			temp = Character.getNumericValue(array [i]);
+			par += temp * (Math.pow(10, (array.length - i)));
+		}
+		par /= 10;
+		System.out.println(par);
+	}
+	public static void parseInt(String s) {
+		int par = 0;
+		int temp = 0;
+		for (int i = 0; i < s.length(); i++) {
+			temp = (int) Character.getNumericValue(s.charAt(i));
+			par += temp * (Math.pow(10, (s.length() - i)));
+		}
+		par /= 10;
+		System.out.println(par);
+	}
 }
