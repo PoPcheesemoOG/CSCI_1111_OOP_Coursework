@@ -21,17 +21,33 @@ public class Exercise11_3 {
 		System.out.println("New balance: " + Acc1.getBalance());
 		System.out.println("\nDepositing 3000...\n");
 		Acc1.deposit(3000);
-		System.out.println("New balance: " + Acc1.getBalance());
-		
+		Acc1.balance = 5;
+		System.out.println("New balance: " + Acc1.getBalance() + "\n\n");
+		CheckingsAccount CA1 = new CheckingsAccount();
+		System.out.println("Account Details:");
+		System.out.println("Id: " + CA1.getId());
+		System.out.println("Balance: " + CA1.getBalance());
+		System.out.println("Interest rate: " + CA1.getAnnualInterestRate());
+		System.out.println("Date: " + CA1.getDateCreated());
+		System.out.println("Overdraft Limit: " + CA1.getOverdraftLimit());
+		CA1.setBalance(1000);
+		System.out.println("\nNew Balance: " + CA1.getBalance());
+		System.out.println("Withdrawing 800...");
+		CA1.withdraw(800);
+		System.out.println("\nNew Balance: " + CA1.getBalance());
+		System.out.println("Withdrawing 400...");
+		CA1.withdraw(400);
+		System.out.println("\nNew Balance: " + CA1.getBalance());
+		CA1.withdraw(1000);
 	}
 
 }
 class Account{
 	private int id;
-	private double balance;
+	protected double balance;
 	private double annualInterestRate;
 	private Date dateCreated = new Date ();
-	
+
 	Account(){
 		id = 0;
 		balance = 0;
@@ -44,7 +60,7 @@ class Account{
 		annualInterestRate = 0;
 		Date dateCreated = new Date();
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -72,20 +88,47 @@ class Account{
 	public String getDateCreated() {
 		return dateCreated.toString();
 	}
-	
+
 	public double getMonthlyInterestRate(double annualInterestRate) {
 		return annualInterestRate / 1200;
 	}
-	
+
 	public double getMonthlyInterest(double annualInterestRate, double balance) {
 		return getMonthlyInterestRate(annualInterestRate) * balance;
 	}
-	
+
 	public void withdraw(double wAmount) {
 		this.balance -= wAmount;
 	}
-	
+
 	public void deposit(double dAmount) {
 		this.balance += dAmount;
+	}
+}
+
+class CheckingsAccount extends Account{
+	private double OverdraftLimit;
+	CheckingsAccount(){
+		OverdraftLimit = 500;
+	}
+	CheckingsAccount(double newOverdraftLimit){
+		this.OverdraftLimit = newOverdraftLimit;
+	}
+	public void setOverdraftLimit(double newOverdraftLimit) {
+		this.OverdraftLimit = newOverdraftLimit;
+	}
+	public double getOverdraftLimit() {
+		return OverdraftLimit;
+	}
+	public void withdraw(double wAmount) {
+		if (wAmount <= balance == true) {
+			this.balance -= wAmount;
+		} else {
+			if (wAmount > (this.balance + OverdraftLimit) ) {
+				System.out.println("The withdrawal amount is more than is approved.");
+			} else {
+				this.balance -= wAmount;
+			}
+		}
 	}
 }
