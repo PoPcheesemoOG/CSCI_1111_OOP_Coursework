@@ -1,10 +1,11 @@
 /* Name: Paul Helske
  * Date: 02/16/2023
  */
+package vingo;
 
 import java.util.Date;
 
-public class Exercise11_3 {
+public class Bingo {
 
 	public static void main(String[] args) {
 		Account Acc1 = new Account(1122, 20000);
@@ -14,8 +15,12 @@ public class Exercise11_3 {
 		System.out.println("Balance: " + Acc1.getBalance());
 		System.out.println("Interest rate: " + Acc1.getAnnualInterestRate());
 		System.out.println("Date: " + Acc1.getDateCreated());
-		//System.out.println("Monthly interest rate: " + Acc1.getMonthlyInterestRate(Acc1.getAnnualInterestRate()));
-		System.out.println("Monthly interest: " + Acc1.getMonthlyInterest(Acc1.getAnnualInterestRate(), Acc1.getBalance()));
+		System.out.println("Monthly interest: " + Acc1.getMonthlyInterest(
+				Acc1.getAnnualInterestRate(),Acc1.getBalance()) + "\n");
+		
+		System.out.println("Using toString method...");
+		Acc1.toString();
+		
 		System.out.println("\nWithdrawing 2500...\n");
 		Acc1.withdraw(2500);
 		System.out.println("New balance: " + Acc1.getBalance());
@@ -39,6 +44,12 @@ public class Exercise11_3 {
 		CA1.withdraw(400);
 		System.out.println("\nNew Balance: " + CA1.getBalance());
 		CA1.withdraw(1000);
+		CA1.toString();
+		SavingsAccount SA1 = new SavingsAccount();
+		SA1.setBalance(100);
+		SA1.toString();
+		SA1.withdraw(150);
+		
 	}
 
 }
@@ -47,18 +58,21 @@ class Account{
 	protected double balance;
 	private double annualInterestRate;
 	private Date dateCreated = new Date ();
-
+	
 	Account(){
 		id = 0;
 		balance = 0;
 		annualInterestRate = 0;
 		Date dateCreated = new Date();
+		
 	}
-	Account(int newId, double newBalance){
-		id = newId;
+	Account(int id, double newBalance){
+		this.id = id;
 		balance = newBalance;
 		annualInterestRate = 0;
 		Date dateCreated = new Date();
+		
+		
 	}
 
 	public int getId() {
@@ -104,6 +118,15 @@ class Account{
 	public void deposit(double dAmount) {
 		this.balance += dAmount;
 	}
+	
+	public String toString() {
+		System.out.println("Account Details:");
+		System.out.println("Id: " + id);
+		System.out.println("Balance: " + balance);
+		System.out.println("Interest rate: " + annualInterestRate);
+		System.out.println("Date: " + dateCreated + "\n");
+	return "";
+	}
 }
 
 class CheckingsAccount extends Account{
@@ -122,13 +145,43 @@ class CheckingsAccount extends Account{
 	}
 	public void withdraw(double wAmount) {
 		if (wAmount <= balance == true) {
-			this.balance -= wAmount;
+			balance -= wAmount;
 		} else {
-			if (wAmount > (this.balance + OverdraftLimit) ) {
-				System.out.println("The withdrawal amount is more than is approved.");
+			if (wAmount > (balance + OverdraftLimit) ) {
+				System.out.println("The withdrawal amount is more than is approved.\n");
 			} else {
 				this.balance -= wAmount;
 			}
 		}
+	}
+	public String toString() {
+		System.out.println("Checking Account Details:");
+		System.out.println("Id: " + getId());
+		System.out.println("Balance: " + getBalance());
+		System.out.println("Interest rate: " + getAnnualInterestRate());
+		System.out.println("Date: " + getDateCreated());
+		System.out.println("Overdraft limit is: " + OverdraftLimit + "\n");
+		return "";
+	}
+}
+
+class SavingsAccount extends Account{
+	SavingsAccount(){}
+	
+	public void withdraw(double wAmount) {
+		if (wAmount > balance == true) {
+			System.out.println("The withdrawal amount is more than is approved.\n");
+		}
+		else {
+			this.balance -= wAmount;
+		}
+	}
+	public String toString() {
+		System.out.println("Savings Account Details:");
+		System.out.println("Id: " + getId());
+		System.out.println("Balance: " + getBalance());
+		System.out.println("Interest rate: " + getAnnualInterestRate());
+		System.out.println("Date: " + getDateCreated() + "\n");
+		return "";
 	}
 }
