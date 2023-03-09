@@ -21,13 +21,13 @@ public static void rando() {
 	int w = 0;
 	while (w == 0) {
 		try {
-			System.out.print("please enter an index for the array: ");
+			System.out.print("please enter an integer between 0-99 for the array: ");
 			int q = input.nextInt();
 			System.out.print("\nHere is your random number: " + list[q]);
 			w = 1;
 
 		} catch (Exception ex) {
-			System.out.println("Sorry that is invalid. Please enter a proper number.\n");
+			System.out.println("Sorry that is OUT OF BONDS \nPlease enter an integer between 0-99.\n");
 		}
 	}
 }
