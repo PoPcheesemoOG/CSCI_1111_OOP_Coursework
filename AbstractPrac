@@ -1,0 +1,62 @@
+public static void main(String[] args) {
+		Rec rectangle = new Rec();
+		rectangle.getColor();
+		
+		Rec rectangle2 = new Rec();
+		Cir circle = new Cir();
+		// An array of parents.
+		Geo[] objects = {rectangle, rectangle2, circle};
+		// How to cast the parent to a child.
+		// Converting the parent object into its child.
+		Rec temp = (Rec) objects[1];
+		temp.doARectangleThing();
+		// The Parents in the array can access the values of the child,
+		// as long as the parent has the method to do it.
+		System.out.println(objects[0].getColor());
+	}
+
+}
+// The Abstract (Absent) parent class.
+abstract class Geo {
+	// Variables
+	String Color = "";
+	boolean Hollow;
+	int Quantity;
+	double Area;
+	
+	//Methods
+	//Getters
+	public double getArea() { 
+		return 0.5;
+	} // The non abstract method has a body and is automatically in all children.
+	
+	abstract String getColor();
+	// The abstract methods CAN not have a body and all children need to define it for themselves.
+}
+
+class Cir extends Geo {
+	double Radius;
+
+	String getColor() {
+		return Color;
+	}
+	
+}
+
+class Rec extends Geo {
+	double Height;
+	double Width;
+	
+	public void doSomething() {
+		getArea();
+	}
+	
+	String getColor() {
+		return "Blue";
+	}
+	
+	
+	public void doARectangleThing() {
+		
+	}
+}
