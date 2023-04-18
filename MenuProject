@@ -1,0 +1,82 @@
+/* Name: Paul Helske
+ * Date: 4/18/23
+ */
+
+public class menu {
+
+	public static void main(String[] args) {
+		askOrder();
+		
+		
+
+	}
+	
+	public static void askOrder() {
+		System.out.println("Welcome to [Enter Restaurant Name Here]");
+		System.out.println("Please enter the number of the items you want to order: ");
+	}
+
+}
+
+abstract class menuItem {
+	private double price;
+	private int id;
+	private String name;
+	
+	protected menuItem(){
+	}
+	protected menuItem(double price, int id, String name) {
+		this.price = price;
+		this.id = id;
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return this.price;
+	}
+	public void setPrice(double newPrice) {
+		this.price = newPrice;
+	}
+	public int getId() {
+		return id;
+	}
+	private void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	private void setName(String name) {
+		this.name = name;
+	}
+
+	
+}
+
+public class drink extends menuItem{
+	private char size;
+	private String flavor;
+	
+	drink(char size, String flavor){
+		this.size = size;
+		this.flavor = flavor;
+	}
+	
+}
+
+public class burger extends menuItem{
+	burger();
+}
+
+public class pizza extends menuItem{
+	pizza();
+}
+
+public class side extends menuItem{
+	side();
+}
+public class dessert extends menuItem{
+	dessert();
+}
+
+
