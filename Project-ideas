@@ -1,9 +1,30 @@
 
 
 Objects and Classes
+
 Inheritance and ArrayLists
+	Customer types in their order into an ArrayList...
+	
 Exceptions, try-catches, Text I/O
+
 Abstracts and Interfaces
+	Abstract menuItems (ignore capitalization)
+		double price
+		int id
+		String name
+
+ArrayList for the foods
+
+
+
+
+
+
+
+
+
+
+
 
 
 
